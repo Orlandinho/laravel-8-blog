@@ -8,15 +8,14 @@
                 <img src="/images/illustration-1.png" alt="Illustration" class="rounded-xl">
 
                 <p class="text-gray-400 mt-4 block text-xs">
-                    Published <time>1 day ago</time>
+                    Published <time>{{$post->created_at->diffForHumans()}}</time>
                 </p>
 
                 <div class="flex items-center justify-center text-sm mt-4">
                     <img src="/images/lary-avatar.svg" alt="Lary avatar">
 
                     <div class="ml-3 text-left">
-                        <h5 class="font-bold">Lary Laracore</h5>
-                        <h6>Mascot at Laracasts</h6>
+                        <h5 class="font-bold">{{$post->author->name}}</h5>
                     </div>
                 </div>
             </div>
@@ -25,32 +24,19 @@
 
                 <div class="flex justify-between mb-8 text-lg">
                     <div>
-                        <a href="#">Back to posts</a>
+                        <a href="/">Back to posts</a>
                     </div>
 
                     <div class="space-x-2">
-                        <a href="#" class="px-3 py-1 transition-colors duration-300 border border-blue-300 text-blue-300 hover:text-white hover:bg-blue-300 rounded-full text-xs uppercase font-semiblod">techniques</a>
-                        <a href="#" class="px-3 py-1 transition-colors duration-300 border border-red-300 text-red-300 hover:text-white hover:bg-red-300 rounded-full text-xs uppercase font-semiblod">updates</a>
+                        <x-category-button :category="$post->category" />
                     </div>
                 </div>
 
-                <h1 class="font-bold text-4xl mb-10">This is another big title in another page! Let's go!</h1>
+                <h1 class="font-bold text-4xl mb-10">{{$post->title}}</h1>
 
                 <div class="space-y-6">
 
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias facere nobis fugit sapiente harum labore aut assumenda cumque vero sed. Voluptate, cupiditate dolor architecto perferendis blanditiis accusantium illo commodi eligendi.</p>
-
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias facere nobis fugit sapiente harum labore aut assumenda cumque vero sed. Voluptate, cupiditate dolor architecto perferendis blanditiis accusantium illo commodi eligendi.</p>
-
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias facere nobis fugit sapiente harum labore aut assumenda cumque vero sed.</p>
-
-                    <h2 class="font-bold text-lg">This is a subtitle</h2>
-
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias facere nobis fugit sapiente harum labore aut assumenda cumque vero sed. Voluptate, cupiditate dolor architecto perferendis blanditiis accusantium illo commodi eligendi.</p>
-
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias facere nobis fugit sapiente harum labore aut assumenda cumque vero sed. Voluptate, cupiditate dolor architecto perferendis blanditiis accusantium illo commodi eligendi.</p>
-
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias facere nobis fugit sapiente harum labore aut assumenda cumque vero sed. Voluptate, cupiditate dolor architecto perferendis blanditiis accusantium illo commodi eligendi.</p>
+                    {{$post->body}}
 
                 </div>
             </div>

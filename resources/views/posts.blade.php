@@ -4,20 +4,16 @@
 
     <main class="max-w-6xl mx-auto mt-8 lg:mt-16 space-y-4">
 
-        <x-featured-post-card/>
+        @if ($posts->count())
 
-        <div class="lg:grid lg:grid-cols-2">
+            <x-posts-grid :posts="$posts" />
 
-            <x-medium-post-card/>
-            <x-medium-post-card/>
+        @else
 
-        </div>
+            <p class="text-center">There are no posts yet. Check this back later</p>
 
-        <div class="lg:grid lg:grid-cols-3">
-            <x-post-card />
-            <x-post-card />
-            <x-post-card />
-        </div>
+        @endif
+
     </main>
 
 </x-layout>
