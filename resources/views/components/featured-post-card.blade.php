@@ -20,8 +20,8 @@
                 </div>
             </header>
 
-            <div class="text-sm">
-                <p>{{$post->excerpt}}</p>
+            <div class="text-sm space-y-4">
+                {!! $post->excerpt !!}
             </div>
 
             <footer class="flex justify-between items-center mt-2">
@@ -29,8 +29,9 @@
                     <img src="/images/lary-avatar.svg" alt="lary avatar">
 
                     <div class="ml-4">
-                        <h5 class="font-bold">{{$post->author->name}}</h5>
-                        <h6>Mascot at Laracasts</h6>
+                        <h5 class="font-bold hover:text-blue-400">
+                            <a href="/authors/{{ $post->author->username }}">{{$post->author->name}}</a>
+                        </h5>
                     </div>
                 </div>
 

@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Laravel Blog</title>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
     </head>
 
         <section class="px-6 py-8 font-openSans">

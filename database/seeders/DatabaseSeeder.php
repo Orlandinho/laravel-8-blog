@@ -17,16 +17,19 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory()->create([
-            'name' => 'John Doe',
-            'email' => 'johndoe@example.com',
+            'name' => 'Antonio Orlando',
+            'username' => 'tony',
+            'email' => 'orlando@example.com',
         ]);
         User::factory()->create([
-            'name' => 'Jane Doe',
-            'email' => 'janedoe@example.com',
+            'name' => 'Iolanda Tanaka',
+            'username' => 'ioio',
+            'email' => 'ioio@example.com',
         ]);
         User::factory()->create([
-            'name' => 'Jake Doe',
-            'email' => 'jakedoe@example.com',
+            'name' => 'Guilherme Martins',
+            'username' => 'gui-martins',
+            'email' => 'guimartins@example.com',
         ]);
 
         Category::create([
@@ -42,7 +45,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'work',
         ]);
 
-        Post::factory(20)->create();
+        Post::factory(25)->create();
 
     }
 }

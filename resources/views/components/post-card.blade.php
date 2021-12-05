@@ -26,8 +26,8 @@
 
             </header>
 
-            <div class="text-sm my-6">
-                <p>{{$post->excerpt}}</p>
+            <div class="text-sm my-6 space-y-4">
+                {!! $post->excerpt !!}
             </div>
 
             <footer class="flex justify-between items-center mt-2">
@@ -35,12 +35,14 @@
                     <img src="/images/lary-avatar.svg" alt="lary avatar">
 
                     <div class="ml-4">
-                        <h5 class="font-bold">{{$post->author->name}}</h5>
+                        <h5 class="font-bold hover:text-blue-400">
+                            <a href="/authors/{{ $post->author->username }}">{{$post->author->name}}</a>
+                        </h5>
                     </div>
                 </div>
 
                 <div>
-                    <a href="#" class="rounded-full px-6 py-2 text-sm font-semibold bg-gray-300 hover:bg-gray-400">Read more</a>
+                    <a href="/posts/{{$post->slug}}" class="rounded-full px-6 py-2 text-sm font-semibold bg-gray-300 hover:bg-gray-400">Read more</a>
                 </div>
             </footer>
         </div>
