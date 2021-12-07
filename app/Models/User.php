@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
     ];
@@ -45,5 +46,15 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function getUsernameAtttribute($username) //This is an accessor. It has to use 'get' 'Something' 'Attribute' in order for it to work
+    {
+        return ucwords($username);
+    }
+
+    public function setPasswordAttribute($password) //This is a mutator. It has to use 'has' 'Something' 'Attribute' in order for it to work
+    {
+        $this->attributes['password'] = bcrypt($password);
     }
 }

@@ -19,7 +19,10 @@
             </div>
 
             <div class="relative bg-gray-300 flex lg:inline-flex items-center rounded-xl py-2 px-5">
-                <form>
+                <form action="/">
+                    @if(request('category'))
+                        <input type="hidden" name="category" value="request('category')">
+                    @endif
                         <input type="text" class="bg-transparent placeholder-black focus-within:outline-none font-semibold text-sm" name="search" value="{{ request('search') }}" placeholder="Find something">
                 </form>
             </div>

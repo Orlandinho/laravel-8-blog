@@ -36,7 +36,7 @@
 
                     <div class="ml-4">
                         <h5 class="font-bold hover:text-blue-400">
-                            <a href="/authors/{{ $post->author->username }}">{{$post->author->name}}</a>
+                            <a href="/?author={{ $post->author->username }}">{{$post->author->name}}</a>
                         </h5>
                     </div>
                 </div>

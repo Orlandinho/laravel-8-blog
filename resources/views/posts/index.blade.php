@@ -8,6 +8,7 @@
 
             <x-posts-grid :posts="$posts" />
 
+            {{ $posts->links() }}
         @elseif(!$posts->count() && request('search') === ''||NULL)
 
             <p class="text-center">There are no posts yet.</p>

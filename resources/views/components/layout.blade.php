@@ -8,7 +8,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
     </head>
-
+    <body>
         <section class="px-6 py-8 font-openSans">
 
             <nav class="md:flex md:justify-between md:items-center">
@@ -19,9 +19,18 @@
                     </a>
                 </div>
 
-                <div class="mt-8 lg:mt-0">
-                    <a href="/" class="text-xs font-bold">HOME PAGE</a>
-                    <a href="#" class="bg-blue-500 ml-3 font-semibold rounded-full text-white text-xs py-3 px-5">SUBSCRIBE FOR UPDATES</a>
+                <div class="mt-8 lg:mt-0 flex items-center">
+                    @auth
+                        <p class="uppercase font-semibold text-sxs">Welcome back {{ auth()->user()->username }}!</p>
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button class="text-blue-500 text-xs font-semibold ml-4" type="submit">Log out</button>
+                        </form>
+                    @else
+                        <a href="/register" class="text-xs font-bold uppercase">register</a>
+                        <a href="/login" class="text-xs font-bold uppercase ml-4">login</a>
+                    @endauth
+                    <a href="#" class="bg-blue-500 ml-4 font-semibold rounded-full text-white text-xs py-3 px-5">SUBSCRIBE FOR UPDATES</a>
                 </div>
 
             </nav>
@@ -48,7 +57,8 @@
                 </div>
 
             </footer>
-
         </section>
+        <x-flash />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    </body>
 </html>
