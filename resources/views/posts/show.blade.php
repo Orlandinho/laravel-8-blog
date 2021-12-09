@@ -46,15 +46,14 @@
 
             </div>
             {{--     coments section       --}}
-            <section class="col-span-8 col-start-5 mt-10">
+            <section class="col-span-8 col-start-5 space-y-4 mt-10">
 
-                <article class="flex bg-gray-100 p-4 border border-gray-200 rounded-xl space-y-4 space-x-4">
+                @include('posts._add-comment-form')
 
-                    <x-post-comment />
-                    <x-post-comment />
-                    <x-post-comment />
+                @foreach($post->comments as $comment)
+                    <x-post-comment :comment="$comment" />
+                @endforeach
 
-                </article>
             </section>
 
         </article>

@@ -48,6 +48,11 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function getUsernameAtttribute($username) //This is an accessor. It has to use 'get' 'Something' 'Attribute' in order for it to work
     {
         return ucwords($username);

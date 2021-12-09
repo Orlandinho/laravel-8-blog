@@ -30,7 +30,7 @@
                         <a href="/register" class="text-xs font-bold uppercase">register</a>
                         <a href="/login" class="text-xs font-bold uppercase ml-4">login</a>
                     @endauth
-                    <a href="#" class="bg-blue-500 ml-4 font-semibold rounded-full text-white text-xs py-3 px-5">SUBSCRIBE FOR UPDATES</a>
+                    <a href="#subscribe" class="bg-blue-500 ml-4 font-semibold rounded-full text-white text-xs py-3 px-5">SUBSCRIBE FOR UPDATES</a>
                 </div>
 
             </nav>
@@ -51,7 +51,7 @@
                                 <input type="text" placeholder="Your e-mail address" class="bg-transparent focus-within:outline-none">
                             </div>
 
-                            <button type="submit" class="rounded-full hover:bg-blue-400 bg-blue-500 font-semibold text-white text-xs py-2 px-6">SUBSCRIBE</button>
+                            <button type="submit" id="subscribe" class="rounded-full hover:bg-blue-400 bg-blue-500 font-semibold text-white text-xs py-2 px-6">SUBSCRIBE</button>
                         </form>
                     </div>
                 </div>
