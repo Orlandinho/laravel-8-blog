@@ -46,13 +46,19 @@
 
                 <div class="mt-10">
                     <div class="relative inline-block mx-auto bg-gray-300 rounded-full">
-                        <form action="#" method="post" class="flex text-sm">
+                        <form action="/newsletter" method="post" class="flex text-sm">
+                            @csrf
                             <div class="inline-flex py-3 px-5 items-center">
-                                <input type="text" placeholder="Your e-mail address" class="bg-transparent focus-within:outline-none">
+                                <input type="text" name="email" placeholder="Your e-mail address" class="bg-transparent focus-within:outline-none">
                             </div>
 
                             <button type="submit" id="subscribe" class="rounded-full hover:bg-blue-400 bg-blue-500 font-semibold text-white text-xs py-2 px-6">SUBSCRIBE</button>
                         </form>
+                    </div>
+                    <div>
+                        @error('email')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 

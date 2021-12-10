@@ -50,9 +50,11 @@
 
                 @include('posts._add-comment-form')
 
-                @foreach($post->comments as $comment)
+                @forelse($post->comments as $comment)
                     <x-post-comment :comment="$comment" />
-                @endforeach
+                @empty
+                    <p class="text-sm">There's no comments yet. </p>
+                @endforelse
 
             </section>
 
