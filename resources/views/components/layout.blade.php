@@ -21,50 +21,78 @@
 
                 <div class="mt-8 lg:mt-0 flex items-center">
                     @auth
-                        <p class="uppercase font-semibold text-sxs">Welcome back {{ auth()->user()->username }}!</p>
-                        <form action="/logout" method="POST">
-                            @csrf
-                            <button class="text-blue-500 text-xs font-semibold ml-4" type="submit">Log out</button>
-                        </form>
+
+                        <x-dropdown>
+                            <x-slot name='trigger'>
+                                <p class="uppercase font-semibold text-sxs">Welcome back {{ auth()->user()->username }}!</p>
+                            </x-slot>
+
+                            @can('admin')
+                            <x-dropdown-item href='/admin/posts' :active="request()->is('admin/posts')">Dashboard</x-dropdown-item>
+                            <x-dropdown-item href='/admin/posts/create' :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
+                            @endcan
+
+                            <x-dropdown-item href='#' x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()" >Log Out</x-dropdown-item>
+
+
+                            <form id="logout-form" action="/logout" method="POST" class="hidden">
+                                @csrf
+                                <button class="text-blue-500 text-xs font-semibold ml-4" type="submit">Log out</button>
+                            </form>
+
+                        </x-dropdown>
+
                     @else
                         <a href="/register" class="text-xs font-bold uppercase">register</a>
                         <a href="/login" class="text-xs font-bold uppercase ml-4">login</a>
                     @endauth
-                    <a href="#subscribe" class="bg-blue-500 ml-4 font-semibold rounded-full text-white text-xs py-3 px-5">SUBSCRIBE FOR UPDATES</a>
+                    <a href="#newsletter" class="bg-blue-500 ml-4 font-semibold rounded-full text-white text-xs py-3 px-5">SUBSCRIBE FOR UPDATES</a>
                 </div>
 
             </nav>
 
             {{ $slot }}
 
-            <footer class="py-16 px-10 mt-16 text-center flex-col justify-between items-center bg-gray-100 border border-black border-opacity-5 rounded-xl">
-                <div>
-                    <img src="/images/lary-newsletter-icon.svg" alt="lary-newsletter" class="mx-auto">
-                    <h5 class="text-3xl">Stay in touch with the latest posts</h5>
-                    <p class="text-sm">Promise to keep the inbox clean. No bugs</p>
-                </div>
+            <footer id="newsletter" class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
+                <img src="/images/lary-newsletter-icon.svg" alt="" class="mx-auto -mb-6" style="width: 145px;">
+                <h5 class="text-3xl">Stay in touch with the latest posts</h5>
+                <p class="text-sm mt-3">Promise to keep the inbox clean. No bugs.</p>
 
                 <div class="mt-10">
-                    <div class="relative inline-block mx-auto bg-gray-300 rounded-full">
-                        <form action="/newsletter" method="post" class="flex text-sm">
+                    <div class="relative inline-block mx-auto lg:bg-gray-200 rounded-full">
+
+                        <form method="POST" action="/newsletter" class="lg:flex text-sm">
                             @csrf
-                            <div class="inline-flex py-3 px-5 items-center">
-                                <input type="text" name="email" placeholder="Your e-mail address" class="bg-transparent focus-within:outline-none">
+
+                            <div class="lg:py-3 lg:px-5 flex items-center">
+                                <label for="email" class="hidden lg:inline-block">
+                                    <img src="/images/mailbox-icon.svg" alt="mailbox letter">
+                                </label>
+
+                                <div>
+                                    <input id="email"
+                                           name="email"
+                                           type="text"
+                                           placeholder="Your email address"
+                                           class="lg:bg-transparent py-2 lg:py-0 pl-4 focus-within:outline-none">
+
+                                    @error('email')
+                                    <span class="text-xs text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
 
-                            <button type="submit" id="subscribe" class="rounded-full hover:bg-blue-400 bg-blue-500 font-semibold text-white text-xs py-2 px-6">SUBSCRIBE</button>
+                            <button type="submit"
+                                    class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8"
+                            >
+                                Subscribe
+                            </button>
                         </form>
                     </div>
-                    <div>
-                        @error('email')
-                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                        @enderror
-                    </div>
                 </div>
-
             </footer>
         </section>
         <x-flash />
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </body>
 </html>

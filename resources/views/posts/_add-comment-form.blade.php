@@ -9,21 +9,14 @@
             </header>
 
             <div class="mt-6">
-                                <textarea
-                                    class="w-full border border-gray-200 focus:outline-none ring-1 ring-gray-200 focus:ring-gray-400 p-4 rounded-xl text-sm"
-                                    name="body" required placeholder="Think of something to say" rows="5"></textarea>
+                <textarea class="w-full border border-gray-200 focus:outline-none ring-1 ring-gray-200 focus:ring-gray-400 p-4 rounded-xl text-sm" name="body" required placeholder="Think of something to say" rows="5"></textarea>
 
                 @error('body')
                 <span class="text-xs text-red-600">{{ $message }}</span>
                 @enderror
             </div>
 
-            <div class="mt-4 flex justify-end">
-
-                <button type="submit" class="py-2 px-10 rounded-2xl bg-blue-400 text-white hover:bg-blue-500 uppercase text-xs font-semibold">
-                    post
-                </button>
-            </div>
+            <x-submit-button>Submit</x-submit-button>
 
         </form>
     </x-panel>

@@ -10,14 +10,6 @@
 
             </div>
 
-            <div class="relative bg-gray-300 flex lg:inline-flex items-center rounded-xl">
-                    <select class="flex-1 bg-transparent appearence-none py-2 px-5 text-sm font-semibold">
-                        <option value="category" disabled selected>Other Filters</option>
-                        <option value="foo">Foo</option>
-                        <option value="bar">Bar</option>
-                    </select>
-            </div>
-
             <div class="relative bg-gray-300 flex lg:inline-flex items-center rounded-xl py-2 px-5">
                 <form action="/">
                     @if(request('category'))

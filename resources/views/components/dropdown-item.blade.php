@@ -1,9 +1,9 @@
 @props(['active' => false ])
 
 @php
-$classes = 'block text-left px-3 text-sm hover:bg-gray-400';
+$classes = 'block text-left px-3 text-sm hover:bg-blue-400';
 
-if ($active) $classes .= ' bg-gray-400';
+if ($active) $classes .= ' bg-blue-400';
 
 @endphp
 

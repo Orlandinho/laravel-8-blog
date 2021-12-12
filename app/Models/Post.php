@@ -10,9 +10,9 @@ class Post extends Model
 {
     use HasFactory;
 
-    //permite mass assignment dos campos da tabela que forem expecifícados nessa variável
+    //permite mass assignment dos campos da tabela que forem expecifícados no array $fillable
 
-    protected $fillable = ['post', 'excerpt', 'body'];
+    protected $guarded = [];
 
     //exclui qualquer campo de ser incluído através de mass assignment
 

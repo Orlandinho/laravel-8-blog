@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\RegisterController;
@@ -9,7 +10,6 @@ use App\Http\Controllers\PostController;
 
 
 Route::get('/', [PostController::class, 'index'])->name('home');
-
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
 Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
@@ -17,13 +17,13 @@ Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store
 Route::post('newsletter', NewsletterController::class);
 
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
-
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
 Route::get('/login', [SessionsController::class, 'create'])->middleware('guest');
-
 Route::post('/login', [SessionsController::class, 'store'])->middleware('guest');
-
 Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
-Route::get('/admin/posts/create', [PostController::class, 'create'])->middleware('admin');
+Route::middleware('can:admin')->group( function() {
+
+    Route::resource('admin/posts', AdminPostController::class)->except('show'); // creates all restfull routes except the ones that you explicitly ask it to not create. They are: show, store, create, index, edit, update and destroy
+});
